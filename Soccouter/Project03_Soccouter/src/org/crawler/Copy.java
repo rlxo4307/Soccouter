@@ -38,91 +38,10 @@ public class Copy {
 		int tid_sofa[][] = new int[5][20];
 		int tid_daum[][] = new int[5][20];
 		
-//		5대 리그 2022/23시즌 ~ 2010/11시즌
-		
-//		int sid_sofa[5][14] = { 
-//				{ 41886, 37036, 29415, 23776, 17359, 13380, 11733, 10356, 8186, 6311, 4710, 3391, 2746 },
-//				{ 42409, 37223, 32501, 24127, 18020, 13662, 11906, 10495, 8578, 6559, 4959, 3502, 2896 },
-//				{ 42268, 37166, 28210, 23538, 17597, 13477, 11818, 10419, 8238, 6303, 4792, 3405, 2811 },
-//				{ 42415, 37475, 32523, 24644, 17932, 13768, 11966, 10596, 8618, 6797, 5145, 3639, 2930 },
-//				{ 42273, 37167, 28222, 23872, 17279, 13384, 11648, 10373, 8122, 6271, 4616, 3380, 2719 }
-//		};
-	
-		
-//		int sid_daum[] = { 20212022, 20202021, 20192020, 20182019, 20172018, 
-//		   20162017, 20152016, 20142015, 20132014, 20122013,
-//		   20112012, 20102011 };
-	
-		
-//		epl, primera, bundesliga, seriea, ligue1
-//		int tid_daum[][] = { 
-//					{ 283, 1321, 268, 253, 266, 258, 246, 263, 277, 313, 271, 247, 250, 252, 292, 256, 254, 251, 274, 249 },
-//					{ 1059, 1075, 1069, 35956, 1080, 35955, 1076, 1062, 1061, 1063, 1067, 1068, 1073, 1071, 1058, 1057, 222283, 1070, 1078, 1087 },
-//					{ 1122, 35957, 600950, 1127, 1145, 516328, 1125, 1146, 1129, 1142, 1143, 121583, 1137, 1123, 1132, 1141, 1124, 1135 },
-//					{ 1091, 1088, 1089, 1099, 1100, 1094, 1096, 227478, 601207, 1102, 601208, 601015, 1105, 227477, 1110, 1098, 1093, 1092, 1101, 1097 },
-//					{ 1155, 1580, 1578, 1602, 1587, 1163, 1598, 1591, 1581, 1251, 1588, 121584, 1594, 1792, 424992, 1218, 1260, 601206, 1599, 1191 }
-//				};
+
 		
 		
-//		System.out.println("::::::::::::::::::::::리그 정보 갱신 시작 (LEAGUE)::::::::::::::::::::::");
-//		
-//		for (int i = 0; i < 5; i++) {
-//			
-//			String words[] = lname_sofa[i].split("-");
-//			String change_word[] = new String[words.length];
-//			String changed_word = "";
-//			
-//			for(int j = 0; j < words.length; j++) {
-//				String firstWord = words[j].substring(0, 1).toUpperCase();
-//				String remainWord = words[j].substring(1).toLowerCase();
-//				change_word[j] = firstWord + remainWord;
-//				
-//				changed_word = changed_word + change_word[j];
-//				if(j+1 < words.length)
-//					changed_word += " ";
-//			}
-//			
-//			Connection.Response response = Jsoup.connect("https://sports.daum.net/record/"+lname_daum[i])
-//	                .method(Connection.Method.GET)
-//	                .ignoreContentType(true).ignoreHttpErrors(true)
-//	                .execute();
-//			Document document = response.parse();
-//			
-//			String html = document.html();
-//			String text = document.text();		
-//			html = html.replace("\n", "");
-//			
-//			String tmp = "";
-//			String teamName[] = html.split("\"league_list\"");
-//			tmp = teamName[i+1].substring(teamName[i+1].indexOf(">\"")+">\"".length());
-//			
-//			String LKo = tmp.substring(0, tmp.indexOf("<"));
-//			
-//			
-//			Connection.Response response2 = Jsoup.connect("https://www.sofascore.com/tournament/football/"+country[i]+"/"+lname_sofa[i]+"/"+league[i])
-//	                .method(Connection.Method.GET)
-//	                .ignoreContentType(true).ignoreHttpErrors(true)
-//	                .execute();
-//			Document document2 = response2.parse();
-//			
-//			String html2 = document2.html();
-//			String text2 = document2.text();		
-//			html2 = html2.replace("\n", "");
-//			text2 = text2.replace("\n", "");
-//
-//			String tmp2 = "";
-//			tmp2 = html2.substring(html2.indexOf("logo\":\"")+"logo\":\"".length());
-//			String LImg = tmp2.substring(0, tmp2.indexOf("\""));
-//
-//			String LSlug = country[i] + '/' + lname_sofa[i] + '/' + league[i];
-//			
-//			dao.insertLeague(league[i], lname_daum[i], changed_word, LKo, LImg, LSlug);
-//		}
-		
-		
-		
-		
-System.out.println("::::::::::::::::::::::시즌 정보 갱신 시작 (SEASON)::::::::::::::::::::::");
+		System.out.println("::::::::::::::::::::::시즌 정보 갱신 시작 (SEASON)::::::::::::::::::::::");
 		
 		for (int i = 0; i < 5; i++) {
 				
@@ -304,8 +223,15 @@ System.out.println("::::::::::::::::::::::시즌 정보 갱신 시작 (SEASON)::
 		String[] pid_sofa16 = new String[1000];										//	0 플레이어 ID
 		
 		String[] pid_daum = new String[10000];										//  0 플레이어 ID DAUM
+		String[] pid_sofa_imsi = new String[10000];									//  0 플레이어 ID SOFA
 		String[] PNum_imsi = new String[10000];										//  0 플레이어 임시 등번호
 		String[] PKo_imsi = new String[10000];										//  0 플레이어 임시 한글명
+		String[] PPosition_imsi = new String[10000];								//  0 플레이어 임시 포지션
+		String[] PEnFirstName_imsi = new String[10000];								//  0 플레이어 임시 영문명 성
+		String[] PEnFirstName_imsi2 = new String[10000];							//  0 플레이어 임시 영문명 성2
+		String[] PEnLastName_imsi = new String[10000];								//  0 플레이어 임시 영문명 이름
+		String[] PEnLastName_imsi2 = new String[10000];								//  0 플레이어 임시 영문명 이름2
+		String[] PEn_imsi = new String[10000];										//  0 플레이어 임시 영문명
 		String[] PBirth_imsi = new String[10000];									//  0 플레이어 임시 생년월일
 		String[] PHeight_imsi = new String[10000];									//  0 플레이어 임시 신장
 		String[] tid_sofa_imsi = new String[10000];									//  0 플레이어 임시 ID TEAM
@@ -1391,7 +1317,7 @@ System.out.println("::::::::::::::::::::::시즌 정보 갱신 시작 (SEASON)::
 						&& pid_sofa1[i].equals(pid_sofa6[i]) && pid_sofa1[i].equals(pid_sofa7[i]) &&  pid_sofa1[i].equals(pid_sofa8[i]) &&  pid_sofa1[i].equals(pid_sofa9[i]) 
 						&& pid_sofa1[i].equals(pid_sofa10[i]) && pid_sofa1[i].equals(pid_sofa11[i]) &&  pid_sofa1[i].equals(pid_sofa12[i]) &&  pid_sofa1[i].equals(pid_sofa13[i]) 
 						&& pid_sofa1[i].equals(pid_sofa14[i]) && pid_sofa1[i].equals(pid_sofa15[i]) &&  pid_sofa1[i].equals(pid_sofa16[i])) {
-					System.out.print("Check! PlayerStatInsert ["+ (i+1) +"]번째  ");
+					System.out.print("Check! PlayerStatInsert ["+ (i+1) +"]번째 League="+(a+1)+"번째 ");
 				} else {
 					System.out.println("ERROR !!! PlayerStatInsert ["+ (i+1) +"]번째");
 					break;
@@ -1611,17 +1537,42 @@ System.out.println("::::::::::::::::::::::시즌 정보 갱신 시작 (SEASON)::
 					
 					pid_daum[k+(j*100)+(i*2000)] = tmpPlayerList[k+1].substring(0, tmpPlayerList[k+1].indexOf(","));
 					
-					tmp = tmpPlayerList[k+1].substring(tmpPlayerList[k+1].indexOf("backNumber\":\"")+"backNumber\":\"".length());
+					tmp = tmpPlayerList[k+1].substring(tmpPlayerList[k+1].indexOf("cpPersonId\":\"")+"cpPersonId\":\"".length());
+					pid_sofa_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf("\""));
+					
+					tmp = tmp.substring(tmp.indexOf("backNumber\":\"")+"backNumber\":\"".length());
 					PNum_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf("\""));
 					
 					tmp = tmp.substring(tmp.indexOf("nameKo\":\"")+"nameKo\":\"".length());
 					PKo_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf("\""));
 					
-					tmp = tmp.substring(tmp.indexOf("birthDate\":\"")+"birthDate\":\"".length());
-					PBirth_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf("\""));
+					tmp = tmp.substring(tmp.indexOf("birthDate\":")+"birthDate\":".length());
+					if(tmp.substring(0,1).equals("\"")) 
+						PBirth_imsi[k+(j*100)+(i*2000)] = tmp.substring(1, tmp.indexOf("\","));
+					else 
+						PBirth_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf(","));
 					
-					tmp = tmp.substring(tmp.indexOf("height\":")+"height\":".length());
-					PHeight_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf("."));
+					
+					tmp = tmp.substring(tmp.indexOf("position\":{\"nameMain\":\"")+"position\":{\"nameMain\":\"".length());
+					PPosition_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, 1);
+	
+					tmp = tmp.substring(tmp.indexOf("firstNameEn\":\"")+"firstNameEn\":\"".length());
+					PEnFirstName_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf("\""));					
+					String PEnFirstName_imsi2_insert[] = tmp.split(" ");
+					PEnFirstName_imsi2[k+(j*100)+(i*2000)] = PEnFirstName_imsi2_insert[0];
+						
+					tmp = tmp.substring(tmp.indexOf("lastNameEn\":\"")+"lastNameEn\":\"".length());
+					PEnLastName_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf("\""));
+					String PEnLastName_imsi2_insert[] = tmp.split(" ");
+					PEnLastName_imsi2[k+(j*100)+(i*2000)] = PEnLastName_imsi2_insert[0];
+										
+//					tmp = tmp.substring(tmp.indexOf("nameEn\":\"")+"nameEn\":\"".length());
+//					PEn_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf(" "));
+//					String PEn_insert[] = tmp.split(" ");
+//					PEn_imsi[k+(j*100)+(i*2000)] = PEn_insert[0];
+							
+//					tmp = tmp.substring(tmp.indexOf("height\":")+"height\":".length());
+//					PHeight_imsi[k+(j*100)+(i*2000)] = tmp.substring(0, tmp.indexOf("."));
 					
 					
 				}
@@ -1631,36 +1582,59 @@ System.out.println("::::::::::::::::::::::시즌 정보 갱신 시작 (SEASON)::
 				
 		//DB에 등록 시작 (PlayerDaum)
 		for(int i = 0; i < 10000; i++) {
+			if( pid_daum[i] == null ) {	continue;		}
 			
 			String pid_daum2 = pid_daum[i];
-			String PNum = PNum_imsi[i];
-			String PKo = PKo_imsi[i];
-			String PBirth = PBirth_imsi[i];
-			String PHeight = PHeight_imsi[i];
+			String pid_sofa_imsi2 = pid_sofa_imsi[i];
 			
-			if(PBirth.substring(0,1).equals("\""))
-				PBirth = PBirth.substring(1,5) + "-" + PBirth.substring(5,7)+ "-" +PBirth.substring(7,9);
+			String PNum = "";
+			if(PNum_imsi[i].equals(""))
+				PNum = "0";
 			else
-				PBirth = "(null)";
+				PNum = PNum_imsi[i];
 			
-	        if(PHeight.contains("null")) 
-	        	PHeight = "0";
-	        else 
-	        	PHeight.substring(0,3);
-	        
-	        if(PNum == null || PNum.trim().equals("")) {
-	        	PNum = "0";
-	        }
+			String PKo = PKo_imsi[i];
+			
+			String PBirth = "";
+			if(PBirth_imsi[i].equals("null"))
+				PBirth = "null";
+			else
+				PBirth = PBirth_imsi[i].substring(4,6) + '-' + PBirth_imsi[i].substring(6);
+			
+				
+			String PPosition = PPosition_imsi[i];
+			String PEnFirstName = PEnFirstName_imsi[i];
+			String PEnFirstName2 = PEnFirstName_imsi2[i]; 
+			String PEnLastName = PEnLastName_imsi[i];
+			String PEnLastName2 = PEnLastName_imsi2[i];
+			
+//			String PEn = PEn_imsi[i];
+//			String PBirth = PBirth_imsi[i];
+//			String PHeight = PHeight_imsi[i];
+			
+//			if(PBirth.substring(0,1).equals("\""))
+//				PBirth = PBirth.substring(1,5) + "-" + PBirth.substring(5,7)+ "-" +PBirth.substring(7,9);
+//			else
+//				PBirth = "(null)";
+//			
+//	        if(PHeight.contains("null")) 
+//	        	PHeight = "0";
+//	        else 
+//	        	PHeight.substring(0,3);
+//	        
+//	        if(PNum == null || PNum.trim().equals("")) {
+//	        	PNum = "0";
+//	        }
 	        
 			int i_pid_daum = Integer.parseInt(pid_daum2);
+			int i_pid_sofa = Integer.parseInt(pid_sofa_imsi2);
 			int i_PNum = Integer.parseInt(PNum);
-			int i_PHeight = Integer.parseInt(PHeight);
+//			int i_PHeight = Integer.parseInt(PHeight);
 			
 			
-			System.out.print("Crawler_ PlayerDaum | " + i_pid_daum + " | " + PKo + " | " + PNum + " | " + PBirth + " ");
+			System.out.print("Crawler_ PlayerDaum | " + i_pid_daum + " | " + i_pid_sofa + " | " + PNum + " | " + PKo + " | " + PBirth + " | " + PPosition + " | " + PEnLastName + " | " + PEnLastName2 + " | " + PEnFirstName + " | " + PEnFirstName2 + " | ");
 			
-			dao.insertPlayerDaum(i_pid_daum, PKo, i_PNum, PBirth, i_PHeight);
-			
+			dao.insertPlayerDaum(i_pid_daum, i_pid_sofa, PKo, i_PNum, PBirth, PPosition, PEnLastName, PEnLastName2, PEnFirstName, PEnFirstName2);
 		}
 		
 		
